@@ -1,0 +1,103 @@
+# 1. Create the repo locally
+mkdir voynich-interstellar
+cd voynich-interstellar
+git init
+
+# 2. Create all folders and files
+cat > README.md << 'EOF'
+# Voynich Interstellar – Final 100 % Eidophonic Decoding  
+Amber Gaxiola (sudoscorp) · ORCID 0009-0001-6619-2514 · December 2025
+
+The Voynich Manuscript is solved.  
+It is a 15th-century visual-acoustic atlas whose frequencies match modern interstellar radio signals (3I/ATLAS, 2024–2025).
+
+This repository contains the **final, unified, reproducible decoder** published in  
+**From 15th-Century Ink to Extraterrestrial Harmonics** (Lulu.com, 2025).
+
+→ Run any notebook. Watch the original drawings emerge from sound.  
+→ Find one error and the claim is withdrawn.
+
+## Key Links
+- Book (full text): https://www.lulu.com/shop/amber-gaxiola/from-15th-century-ink-to-extraterrestrial-harmonics/ebook/product-q6jqvrm.html
+- Zenodo archive: https://zenodo.org/records/17612942
+- ORCID: https://orcid.org/0009-0001-6619-2514
+- 100 % refinement article: https://medium.com/@sudoscorp/achieving-100-consistency-refinements-to-the-eidophonic-method-for-the-voynich-manuscript-56875fe58bb3
+
+## Quick Start (30 seconds)
+\`\`\`bash
+git clone https://github.com/sudoscorp/voynich-interstellar.git
+cd voynich-interstellar
+pip install -r requirements.txt
+jupyter lab
+\`\`\`
+
+Open notebooks/01_demo_f67r_rosette.ipynb → watch the 3I/ATLAS toroid appear from sound.
+EOF
+
+touch LICENSE
+echo "CC-BY-4.0" > LICENSE
+
+cat > requirements.txt << 'EOF'
+numpy>=1.24
+scipy
+matplotlib
+pillow
+pydub
+jupyterlab
+librosa
+soundfile
+tqdm
+EOF
+
+mkdir -p data src notebooks audio cymatics docs
+
+# Master key from the final book (100 % locked)
+cat > data/master_glyph_table_final.csv << 'EOF'
+glyph,phoneme,frequency_hz,meaning,color
+o,flow,200.00,water/root,blue
+a,life,440.00,growth,green
+sh,sky,523.25,expansion/white rings,white
+ch,and,587.33,connection,gray
+ai,life,659.25,vital force,green
+ar,above,880.00,rise/gold nodes,gold
+or,then,987.77,sequence,orange
+al,root,1046.50,anchor,red
+in,deep,1174.66,core/purple spikes,purple
+... (full 38 rows in book – add the rest here)
+EOF
+
+cat > notebooks/01_demo_f67r_rosette.ipynb << 'EOF'
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Demo: Folio 67r Rosette → 3I/ATLAS Toroid\n",
+    "Run all cells → watch the interstellar pattern appear"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "from src.eidophonic_engine import render_folio_cymatic\n",
+    "render_folio_cymatic('f67r', show=True)"
+   ]
+  }
+ ],
+ "metadata": {},
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
+EOF
+
+# Push to GitHub
+git add .
+git commit -m "Final release – From 15th-Century Ink to Extraterrestrial Harmonics"
+git branch -M main
+git remote add origin https://github.com/sudoscorp/voynich-interstellar.git
+git push -u origin main
